@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "upload-note": "git add . && git commit -m \"sync local note\" && git push origin main",
-    "publish-note": ".ci/publish.sh"
+    "upload-note": "git add . && git commit -m \"sync local note\" && git push origin main"
   },
   "repository": {
     "type": "git",
