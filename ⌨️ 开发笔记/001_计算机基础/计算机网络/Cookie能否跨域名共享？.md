@@ -1,17 +1,3 @@
----  
-tags:  
-  - Releases  
-  - docusaurus  
-keywords:
-  - docs
-  - docusaurus
-last_update:
-  date: 1/1/2000
-  author: custom author name
-# id: part1 重新定义文档的名称和url
-# slug: / 重新定义文档显示的位置
----
-
 今天在掘金前端推送的内容中看到了这一条：cookie能否跨域名共享呢？带着这个疑问，我们来往下分析一下。
 
 ## 首先回答：什么是跨域名？
