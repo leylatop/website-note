@@ -1,0 +1,20 @@
+{
+  "name": "website-note",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "upload-note": "git add . && git commit -m \"sync local note\" && git push origin main",
+    "publish-note": ".ci/publish.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leylatop/website-note.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leylatop/website-note/issues"
+  },
+  "homepage": "https://github.com/leylatop/website-note#readme"
+}
