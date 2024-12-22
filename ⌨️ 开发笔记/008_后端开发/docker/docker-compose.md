@@ -8,6 +8,9 @@ docker-compose up
 # 启动容器，并在后台运行
 docker-compose up -d
 
+# 构建镜像并启动容器（再次编译镜像）
+docker-compose up --build
+
 # 停止所有容器
 docker-compose stop
 
@@ -57,3 +60,40 @@ networks:
   custom-network:  # 自定义网络名称
     driver: bridge  # 指定网络的驱动类型
 ```
+
+
+
+## docker-compose.yml 文件构建镜像
+
+```yml
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql  # 将宿主机dbdata数据卷挂载到容器中
+    environment:
+      - MYSQL_ROOT_PASSWORD=root  # 指定mysql的root密码，会自动创建密码
+      - MYSQL_DATABASE=mydb  # 指定mysql的数据库名称，会自动创建数据库
+      - MYSQL_USER=myuser  # 指定mysql的用户名，会自动创建用户
+      - MYSQL_PASSWORD=mypassword  # 指定mysql的密码，会自动创建密码
+  node:
+    build: ./node-app  # 指定构建镜像的目录
+    dockerfile: Dockerfile  # 指定构建镜像的dockerfile文件
+    depends_on:
+      - db  # node服务依赖db服务
+
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - node  # web服务依赖node服务
+    volumes:
+      - ./images/nginx/conf.d:/etc/nginx/conf.d  # 将宿主机的conf.d目录挂载到容器中,后续在/images/nginx/conf.d更改nginx配置文件后，会自动生效
+      - ./images/nginx/public:/usr/share/nginx/html  # 将宿主机的public目录挂载到容器中，后续在/images/nginx/public目录下更改html文件后，会自动生效
+volumes:
+  dbdata:  # 数据卷名称
+    driver: local  # 指定数据卷的驱动类型
+```
+
+在docker-compose.yml 文件所在的目录下，执行 `docker-compose up` 命令，会根据 docker-compose.yml 文件中的配置，构建镜像并启动容器。

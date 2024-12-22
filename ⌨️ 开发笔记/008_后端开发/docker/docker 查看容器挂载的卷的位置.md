@@ -11,7 +11,7 @@ docker inspect <container_id_or_name>
     
 
 例如，如果你看到如下的输出：
-```bash
+```json
 "Mounts": [
     {
         "Type": "bind",
