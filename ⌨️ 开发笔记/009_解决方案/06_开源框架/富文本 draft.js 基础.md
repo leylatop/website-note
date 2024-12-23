@@ -1,4 +1,4 @@
-
+# 富文本 draft.js 基础
 * EditorState——核心对象，提供了一系列静态方法
 	* createEmpty()——创建空的editorState对象
 	* createWithContent(contentState)——根据contentState创建EditorState
