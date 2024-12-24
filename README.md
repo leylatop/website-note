@@ -1,5 +1,4 @@
-# website-note
-
-- 同步最近文件至git的方式
-
-`npm run upload-note`
+# 关于
+- 个人笔记
+- 碎片化积累
+- 涵盖前端、后端、及解决方案
