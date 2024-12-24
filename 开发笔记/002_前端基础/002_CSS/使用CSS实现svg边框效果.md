@@ -11,7 +11,7 @@
 
 
 将svg渲染改为使用css绘制方法如下：
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
