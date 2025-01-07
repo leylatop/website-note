@@ -46,3 +46,15 @@ webpack
     - remotes: 远程模块的地址
     - exposes: 暴露的模块
     - shared: 共享的模块
+
+- ast
+	- 词法解析：最终得到token
+	- 语法解析：最终得到ast树
+- babel
+	- @babel/core
+	- @babel/type
+	- @babel/parser
+	- @babel/traverse
+	- @babel/generator
+- babel插件开发：插件是一个对象，对象中必须包含visitor方法，可以在visitor方法中重写需要的ast节点的方法
+
