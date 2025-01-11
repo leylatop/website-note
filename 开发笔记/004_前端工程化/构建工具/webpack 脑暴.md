@@ -1,11 +1,13 @@
 webpack
 - entry
   - entry 的格式支持字符串、数组、对象
+  - 不指定entry，默认是src/index
 - output
   - path: 输出文件的目录
   - filename: 输出文件的名称
   - publicPath: 输出文件的公共路径
   - chunkFilename: 非入口文件的输出文件的名称
+  - 不指定输出，默认是dist/main
 
 - module-rules
   - js
@@ -19,8 +21,10 @@ webpack
     - style-loader: 负责将js模块动态插入到html中
 
 - plugin
-  - html-template-plugin: 负责定义html模板
-  - mini-css-extract-plugin: 负责将css文件抽离为单独的文件
+	- 内置插件
+	- 非内置插件
+	- html-template-plugin: 负责定义html模板
+	- mini-css-extract-plugin: 负责将css文件抽离为单独的文件
 
 - sourcemap: 源代码和编译后的代码的映射关系
   - devtool: 定义生成什么样的sourcemap、关键字有eval、source-map、cheap、inline、hidden
@@ -56,5 +60,15 @@ webpack
 	- @babel/parser
 	- @babel/traverse
 	- @babel/generator
-- babel插件开发：插件是一个对象，对象中必须包含visitor方法，可以在visitor方法中重写需要的ast节点的方法
+- babel插件开发：
+	- 插件是一个方法；
+	- 方法的参数接收babel传给插件的配置；
+	- 方法返回一个对象，对象中常用的是visitor对象，对象中还可以pre和post的方法。可以在visitor中拦截重写需要的ast节点，并提供对应方法；拦截时使用大写开头的ast节点作为方法名，生成新的节点使用@babel/type中提供的方法；
+	- 可以通过编写插件，实现以下：
+		- 把es6转成es5
+		- 箭头函数转成普通函数
+		- 在方法中调用logger实现自动埋点
+		- 删除代码中的console
+		- 检查代码中的typescript语法是否合格
+		- 按需加载三方依赖包 => import {xx} from 'lodash' => import xx from 'lodash/xx'(babel-plugin-import)
 
