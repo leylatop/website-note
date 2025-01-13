@@ -9,7 +9,7 @@ webpack
   - chunkFilename: 非入口文件的输出文件的名称
   - 不指定输出，默认是dist/main
 
-- module-rules
+- loader：module-rules
   - js
     - babel-loader
       - @babel/preset-env
@@ -20,11 +20,15 @@ webpack
     - css-loader: 负责将css文件转为js模块
     - style-loader: 负责将js模块动态插入到html中
 
+- loader
+	- 本质上是一个函数，接收输入内容，return输出内容
+
 - plugin
 	- 内置插件
 	- 非内置插件
 	- html-template-plugin: 负责定义html模板
 	- mini-css-extract-plugin: 负责将css文件抽离为单独的文件
+	- 本质上是一个class 类，需要提供apply
 
 - sourcemap: 源代码和编译后的代码的映射关系
   - devtool: 定义生成什么样的sourcemap、关键字有eval、source-map、cheap、inline、hidden
