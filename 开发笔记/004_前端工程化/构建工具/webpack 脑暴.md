@@ -17,7 +17,7 @@ webpack
       - @babel/preset-typescript
     - 
   - css
-    - css-loader: 负责将css文件转为js模块
+    - css-loader: 负责将css文件转为字符串，再输出一个js模块
     - style-loader: 负责将js模块动态插入到html中
 
 - loader
